@@ -1,7 +1,171 @@
-//@use "variables";
+@use "variables";
+@import "../utils/mixins";
 * {
   text-decoration: none;
   list-style: none;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Gotu', sans-serif;
+  //font-family: 'Hurricane', cursive;
+  box-sizing: border-box;
+}
+%center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+
+.navbar{
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  display: flex;
+  padding: toRem(40);
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  &__logo{
+    color: $black;
+    font-size: toRem(34);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover{
+      transform: scale(1.05,1.07);
+      transition-timing-function: ease-out;
+      transition-duration: 250ms;
+    }
+  }
+  &__bars{
+    opacity: 0;
+
+   @include tablet{
+     color: $black;
+     opacity: 1;
+     position: absolute;
+     //top: toRem(35);
+     right: toRem(20);
+     font-size: toRem(32);
+
+   }
+  }
+  &__menu {
+
+    @include tablet{
+      display: none;
+    }
+    &--links{
+      color: $black;
+      padding-left: toRem(20);
+      padding-right: toRem(20);
+      padding-bottom: toRem(40);
+      font-size: toRem(18);
+      border-bottom: 4px solid transparent;
+
+      &:hover{
+        color: $graphite;
+        border-color: $graphite;
+
+      }
+    }
+    #button{
+      padding: toRem(12) toRem(24);
+      border: none;
+      border-radius: toRem(10);
+      background-color: $graphite;
+      color: $light;
+      &:hover {
+        background-color: $graphite-2;
+        color: $white;
+        transition: all 0.4s ease;
+      }
+    }
+  }
+}
+
+.hero{
+  background-color: $white;
+  height: 100vh;
+  width: 100vw;
+
+  &__container {
+    height: 100vh;
+    display: flex;
+
+    @include tablet{
+      display: flex;
+      flex-direction: column;
+    }
+    &--left{
+      width: 40vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: toRem(100);
+
+      @include tablet{
+        width: 100vw;
+        margin-top: toRem(50);
+        padding-bottom: toRem(50);
+        font-size: toRem(18);
+      }
+    }
+    &--right{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 60vw;
+      @include tablet{
+        width: 100%;
+      }
+
+      & img{
+        width: 100%;
+        height: 100%;
+
+        @include tablet{
+          width: 100vw;
+          height: 100vh;
+        }
+      }
+    }
+    &--left h1 {
+      font-size: toRem(34);
+
+      @include tablet {
+        font-size: toRem(34);
+      }
+    }
+    &--left h2 {
+      font-size: toRem(28);
+
+
+      @include tablet {
+        font-size: toRem(28);
+      }
+    }
+    &--left p {
+
+      @include tablet {
+        font-size: toRem(18);
+      }
+    }
+    &--btn {
+      background-color: $graphite;
+      border: none;
+      padding: toRem(16) toRem(28);
+      border-radius: toRem(8);
+      margin-top: toRem(30);
+      cursor: pointer;
+      &:hover{
+        background-color: $graphite-2;
+        transition: all 0.4s ease;
+        transform: scale(1.05,1.07);
+        transition-timing-function: ease-out;
+        transition-duration: 250ms;
+      }
+    }
+    &--btn a {
+      color: $white;
+    }
+  }
+}
